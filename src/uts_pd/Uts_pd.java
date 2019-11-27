@@ -98,12 +98,26 @@ public class Uts_pd {
     }
 
     static void tampildata() {
+        String pil= JOptionPane.showInputDialog("pilih 1=A-Z dan 2=Z-A");
+        String sql = null;
+        switch(pil){
+            case "1":
+                sql = "select * from produk order by harga_produk asc";
+                break;
+            case "2":
+                sql = "select * from produk  order by harga_produk desc";
+                break;
+       
+        }
+        System.out.println("urut data");
         try {
-            String sql = "select * from produk";
+           
             rs = st.executeQuery(sql);
             
             while (rs.next()) {
-               JOptionPane.showMessageDialog(null, rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3));
+               System.out.print(rs.getString(1)+"   |");
+                 System.out.print(rs.getString(2)+"   |");
+                System.out.println(rs.getString(3));
             }
         } catch (Exception e) {
         }
